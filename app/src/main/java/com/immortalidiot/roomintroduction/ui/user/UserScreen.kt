@@ -47,7 +47,10 @@ fun UserScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items((uiState as UserScreenUiState.Loaded).entities) { user ->
+                    items(
+                        items = (uiState as UserScreenUiState.Loaded).entities,
+                        key = { user -> user.id }
+                    ) { user ->
                         UserItem(user = user)
                     }
                 }
