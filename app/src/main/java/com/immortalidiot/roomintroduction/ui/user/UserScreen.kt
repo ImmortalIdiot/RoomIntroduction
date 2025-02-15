@@ -30,7 +30,7 @@ fun UserScreen(
             is UserScreenUiState.Loading -> {
                 Text(text = "Loading")
             }
-            is UserScreenUiState.NoEntries -> {
+            is UserScreenUiState.NoEntities -> {
                 Text(text = "No entries")
             }
             is UserScreenUiState.Loaded -> {
@@ -38,7 +38,7 @@ fun UserScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items((uiState as UserScreenUiState.Loaded).entries) { user ->
+                    items((uiState as UserScreenUiState.Loaded).entities) { user ->
                         UserItem(user = user)
                     }
                 }

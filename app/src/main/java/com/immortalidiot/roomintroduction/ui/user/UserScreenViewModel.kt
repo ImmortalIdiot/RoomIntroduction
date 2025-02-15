@@ -29,10 +29,10 @@ class UserScreenViewModel(
             }.await()
 
             if (users.isEmpty()) {
-                _uiState.update { UserScreenUiState.NoEntries }
+                _uiState.update { UserScreenUiState.NoEntities }
             } else {
                 users.sortedByDescending { it.registrationTime }
-                _uiState.update { UserScreenUiState.Loaded(entries = users) }
+                _uiState.update { UserScreenUiState.Loaded(entities = users) }
             }
         }
     }
@@ -40,6 +40,6 @@ class UserScreenViewModel(
 
 sealed interface UserScreenUiState {
     data object Loading : UserScreenUiState
-    data object NoEntries : UserScreenUiState
-    data class Loaded(val entries: List<User>) : UserScreenUiState
+    data object NoEntities : UserScreenUiState
+    data class Loaded(val entities: List<User>) : UserScreenUiState
 }
