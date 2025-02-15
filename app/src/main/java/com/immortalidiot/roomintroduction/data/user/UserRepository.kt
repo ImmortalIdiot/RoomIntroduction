@@ -11,7 +11,7 @@ interface UserRepository {
     suspend fun saveUser(user: User)
 
     @Query("SELECT * FROM User")
-    suspend fun getUsers()
+    suspend fun getUsers(): List<User>
 
     @Query("SELECT * FROM User WHERE User.id = :userId")
     suspend fun getUserById(userId: Long)
