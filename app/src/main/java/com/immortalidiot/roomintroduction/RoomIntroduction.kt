@@ -2,6 +2,7 @@ package com.immortalidiot.roomintroduction
 
 import android.app.Application
 import com.immortalidiot.roomintroduction.data.di.databaseModule
+import com.immortalidiot.roomintroduction.data.di.mockDatabaseModule
 import com.immortalidiot.roomintroduction.ui.di.uiModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -15,7 +16,7 @@ class RoomIntroduction : Application() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@RoomIntroduction)
-            modules(uiModule, databaseModule)
+            modules(uiModule, mockDatabaseModule)
         }
     }
 }

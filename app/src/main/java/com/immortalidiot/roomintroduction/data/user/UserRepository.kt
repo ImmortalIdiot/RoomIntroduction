@@ -14,7 +14,7 @@ interface UserRepository {
     suspend fun getUsers(): List<User>
 
     @Query("SELECT * FROM User WHERE User.id = :userId")
-    suspend fun getUserById(userId: Long)
+    suspend fun getUserById(userId: Long): User?
 
     @Delete
     suspend fun deleteUser(user: User)

@@ -44,7 +44,7 @@ object MockRepository : UserRepository {
 
     override suspend fun getUsers(): List<User> = MOCK_USERS
 
-    override suspend fun getUserById(userId: Long) = Unit
+    override suspend fun getUserById(userId: Long) = MOCK_USERS.random()
 
     override suspend fun deleteUser(user: User) = Unit
 }
