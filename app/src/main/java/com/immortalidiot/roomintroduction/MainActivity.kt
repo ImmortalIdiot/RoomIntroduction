@@ -20,12 +20,10 @@ class MainActivity : ComponentActivity() {
             val userViewModel: UserScreenViewModel = koinViewModel()
 
             RoomIntroductionTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    UserScreen(
-                        viewModel = userViewModel,
-                        paddingValues = innerPadding
-                    )
-                }
+                UserScreen(
+                    viewModel = userViewModel,
+                    modifier = Modifier.fillMaxSize()
+                )
             }
         }
     }
