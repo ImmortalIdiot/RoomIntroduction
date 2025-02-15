@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.immortalidiot.roomintroduction.data.Converters
+import com.immortalidiot.roomintroduction.data.user.MockRepository
 import com.immortalidiot.roomintroduction.data.user.User
 import com.immortalidiot.roomintroduction.data.user.UserRepository
 import org.koin.core.module.dsl.singleOf
@@ -35,4 +36,8 @@ private fun provideUserDatabase(context: Context): UserDatabase {
 val databaseModule = module {
     singleOf(::provideUserDatabase)
     single { get<UserDatabase>().getUserRepository() }
+}
+
+val mockDatabaseModule = module {
+    single<UserRepository> { MockRepository }
 }
