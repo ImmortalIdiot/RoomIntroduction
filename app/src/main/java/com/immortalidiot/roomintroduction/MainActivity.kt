@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.immortalidiot.roomintroduction.ui.theme.RoomIntroductionTheme
 import com.immortalidiot.roomintroduction.ui.user.UserScreen
@@ -19,10 +20,11 @@ class MainActivity : ComponentActivity() {
             val userViewModel: UserScreenViewModel = koinViewModel()
 
             RoomIntroductionTheme {
-                UserScreen(
-                    viewModel = userViewModel,
-                    modifier = Modifier.fillMaxSize()
-                )
+                Surface(modifier = Modifier.fillMaxSize()) {
+                    UserScreen(
+                        viewModel = userViewModel,
+                    )
+                }
             }
         }
     }
