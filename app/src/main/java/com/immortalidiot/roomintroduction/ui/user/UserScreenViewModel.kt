@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.time.Instant
 
 class UserScreenViewModel(
     private val userRepository: UserRepository
@@ -34,6 +35,20 @@ class UserScreenViewModel(
                 users.sortedByDescending { it.registrationTime }
                 _uiState.update { UserScreenUiState.Loaded(entities = users) }
             }
+        }
+    }
+
+    suspend fun saveUser(username: String) {
+        val newUser = User(name = username, registrationTime = Instant.now())
+        userRepository.saveUser(newUser)
+
+        val updatedUsers = userRepository.getUsers()
+
+        val currentState = _uiState.value
+        if (currentState is UserScreenUiState.Loaded) {
+            _uiState.value = UserScreenUiState.Loaded(entities = updatedUsers)
+        } else {
+            loadUsers()
         }
     }
 }
